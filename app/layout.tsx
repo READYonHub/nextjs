@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import './globals.css'
 
 const workSans = localFont({
   src: [
@@ -54,8 +54,8 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "tanujad a next.js-t",
-  description: "a leírásban is kell tanulni next.js-t",
+  title: "YC Directory",
+  description: "Pitch, Vote and Grow",
 };
 
 export default function RootLayout({
@@ -65,7 +65,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={workSans.variable}>        {children}
+      <body className={workSans.variable}>
+        {children}
       </body>
     </html>
   );
