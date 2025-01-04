@@ -1,21 +1,16 @@
 import SerachForm from "../../components/SearchForm";
-import StartupCard from "@/components/StartupCard";
+import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
+import { client } from "@/sanity/lib/client";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home({ searchParams }: {
   searchParams: Promise<{ query?: string }>
 }) {
   const query = (await searchParams).query;
 
-  const posts = [{
-    title: "Fejlesztő",
-    authorr: { _id: 1 },
-    category: "Normális állás",
-    description: 'Itt vannak juttatások, megbecsülés és versenyképes fizetés is!',
-    views: 55,
-    _createdAt: new Date(),
-    image: "https://as2.ftcdn.net/v2/jpg/02/10/96/95/1000_F_210969565_cIHkcrIzRpWNZzq8eaQnYotG4pkHh0P9.jpg"
-  },]
-    ;
+  const posts = await client.fetch(STARTUPS_QUERY);
+  
+  console.log(JSON.stringify(posts))
 
   return (
     <>
